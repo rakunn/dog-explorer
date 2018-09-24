@@ -1,0 +1,34 @@
+.Photo {
+  position: relative;
+  box-sizing: border-box;
+  margin: 5px 0;
+  height: auto;
+  width: 100%;
+  transition: filter 0.5s;
+}
+
+.Photo__author {
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  right: 1em;
+  font-size: 1.25em;
+  z-index: 1;
+}
+
+.Photo__date-taken {
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: 1em;
+  z-index: 1;
+}
+
+.Photo__image {
+  width: 100%;
+  border-radius: 25px;
+}
+
+.Photo:hover .Photo__image {
+  filter: brightness(50%);
+}
