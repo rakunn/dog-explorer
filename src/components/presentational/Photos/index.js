@@ -7,7 +7,7 @@ const Photos = ({ photos }) => {
   return (
     <div className="Photos">
       { photos.map(photo => (
-        <Photo {...photo} />
+        <Photo key={photo.id} {...photo} />
       )) }
     </div>
   );

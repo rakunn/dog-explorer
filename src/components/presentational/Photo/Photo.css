@@ -4,7 +4,20 @@
   margin: 5px 0;
   height: auto;
   width: 100%;
-  transition: filter 0.5s;
+  animation: popUp 0.5s;
+  background-color: white;
+  transition:
+    background-color 0.3s,
+    filter 0.3s;
+}
+
+.Photo--round-borders {
+  border-radius: 10px;
+}
+
+.Photo__content {
+  position: relative;
+  overflow: hidden;
 }
 
 .Photo__author {
@@ -26,9 +39,42 @@
 
 .Photo__image {
   width: 100%;
-  border-radius: 25px;
+  transition:
+    filter 0.3s,
+    transform 0.3s;
+
+  /* below properties are used for fixing bug with blinking border-radius while transition*/
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+}
+
+.Photo__description {
+  box-sizing: border-box;
+  color: #444;
+  margin: 0;
+  padding: 1em;
+  width: 100%;
+}
+
+.Photo:hover {
+  background-color: #ddd;
 }
 
 .Photo:hover .Photo__image {
-  filter: brightness(50%);
+  filter: brightness(70%);
+  transform: scale(1.1);
+}
+
+
+@keyframes popUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

@@ -7,7 +7,7 @@ import Photos from '../Photos';
 
 const Gallery = ({ photos }) => {
   return (
-    <Photos photos={photos}/>
+    <Photos photos={photos} />
   )
 };
 

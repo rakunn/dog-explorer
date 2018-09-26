@@ -1,6 +1,29 @@
 .Photos {
-  line-height: 0;
-  column-count: 4;
+  column-count: 5;
   column-gap: 10px;
   margin: 5px;
+}
+
+@media screen and (max-width: 1700px) {
+  .Photos {
+    column-count: 4;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .Photos {
+    column-count: 3;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .Photos {
+    column-count: 2;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Photos {
+    column-count: 1;
+  }
 }

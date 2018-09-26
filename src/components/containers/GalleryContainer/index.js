@@ -7,6 +7,7 @@ import fetchPhotos from '../../../store/actions/fetchPhotos';
 
 class GalleryContainer extends Component {
   static propTypes = {
+    fetchPhotos: PropTypes.func.isRequired,
     photos: PropTypes.object.isRequired,
   };
 
@@ -16,6 +17,9 @@ class GalleryContainer extends Component {
 
   render() {
     console.log(this.props);
+    if (this.props.photos.stat === 'fail') {
+      //throw new Error('wowowo');
+    }
     return (
       <Gallery photos={this.props.photos.photos.photo} />
     );
