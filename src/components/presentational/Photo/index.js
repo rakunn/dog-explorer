@@ -1,9 +1,9 @@
 import React from 'react';
 import './Photo.css';
 
-const Image = ({ dateupload, description, farm, id, ownername, secret, server, title }) => {
+const Photo = ({ dateupload, onload, description, farm, id, ownername, secret, server, title }) => {
   const constructImageUrl = () => {
-    return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
+    return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_z.jpg`;
   };
 
   const constructDate = (dateInt) => {
@@ -22,7 +22,8 @@ const Image = ({ dateupload, description, farm, id, ownername, secret, server, t
     <figure className="Photo Photo--round-borders">
       <div className="Photo__content Photo--round-borders">
         <img
-          className="Photo__image Photo--round-borders"
+          className="Photo__image Photo--round-borders loaded"
+          onLoad={onload}
           key={id}
           alt={`${title} by ${ownername}`}
           src={constructImageUrl()}
@@ -39,4 +40,4 @@ const Image = ({ dateupload, description, farm, id, ownername, secret, server, t
   );
 };
 
-export default Image;
+export default Photo;

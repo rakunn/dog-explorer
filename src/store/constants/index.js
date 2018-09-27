@@ -1,1 +1,2 @@
 export const UPDATE_PHOTOS = 'UPDATE_PHOTOS';
+export const FINISH_LOADING = 'FINISH_LOADING';

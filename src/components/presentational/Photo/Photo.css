@@ -1,11 +1,12 @@
 .Photo {
+  background-color: white;
   position: relative;
   box-sizing: border-box;
   margin: 5px 0;
   height: auto;
   width: 100%;
-  animation: popUp 0.5s;
-  background-color: white;
+  opacity: 0;
+  line-height: 0;
   transition:
     background-color 0.3s,
     filter 0.3s;
@@ -56,6 +57,7 @@
   margin: 0;
   padding: 1em;
   width: 100%;
+  line-height: normal;
 }
 
 .Photo:hover {
@@ -77,4 +79,8 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.loaded {
+  animation: popUp 0.5s forwards;
 }
