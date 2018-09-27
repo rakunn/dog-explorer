@@ -42,7 +42,7 @@ const mapStateToProps = ({ photos, initialPhotosLoaded }) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchPhotos: () => dispatch(fetchPhotos),
-    finishLoading: () => dispatch(finishLoading),
+    finishLoading: () => dispatch(finishLoading()),
   }
 };
 

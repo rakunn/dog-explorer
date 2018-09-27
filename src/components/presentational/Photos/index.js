@@ -3,13 +3,14 @@ import './Photos.css';
 
 import Photo from '../Photo';
 
-const Photos = ({ photos }) => {
+const Photos = ({ finishLoading, photos }) => {
 
   let loadedImages = 0;
 
   const countLoadedImages = () => {
     loadedImages += 1;
     if (loadedImages === photos.length) {
+      finishLoading();
       document.querySelectorAll('.Photo').forEach((img, id) => {
         img.classList.add('loaded');
         img.style.animationDelay = `${(10 * id)/1000}s`;
