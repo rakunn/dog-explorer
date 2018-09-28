@@ -31,7 +31,7 @@ const Photo = ({ dateupload, onload, description, farm, id, ownername, secret, s
         <p className="Photo__date-taken">{constructDate(dateupload)}</p>
         <p className="Photo__author">{ownername}</p>
       </div>
-      <figcaption>
+      <figcaption className="Photo__caption">
         { description._content.length > 0 && (
           <p className="Photo__description">{shortenText(description._content)}</p>
         )}

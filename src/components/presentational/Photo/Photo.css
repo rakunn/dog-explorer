@@ -2,7 +2,7 @@
   background-color: white;
   position: relative;
   box-sizing: border-box;
-  margin: 5px 0;
+  margin: 0 0 15px 0;
   height: auto;
   width: 100%;
   opacity: 0;
@@ -49,6 +49,11 @@
   -moz-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
+}
+
+.Photo__caption {
+  margin: 0;
+  padding: 0;
 }
 
 .Photo__description {
