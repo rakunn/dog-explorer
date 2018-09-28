@@ -8,14 +8,8 @@ import finishLoading from '../../../store/actions/finishLoading';
 
 class GalleryContainer extends Component {
   static propTypes = {
-    fetchPhotos: PropTypes.func.isRequired,
     finishLoading: PropTypes.func.isRequired,
-    photos: PropTypes.object.isRequired,
-
-  };
-
-  componentDidMount() {
-    this.props.fetchPhotos();
+    photos: PropTypes.array.isRequired,
   };
 
   render() {
@@ -24,7 +18,6 @@ class GalleryContainer extends Component {
     }
     return (
       <Gallery
-        photos={this.props.photos.photos.photo}
         finishLoading={this.props.finishLoading}
         photosLoaded={this.props.initialPhotosLoaded}
       />
@@ -41,7 +34,6 @@ const mapStateToProps = ({ photos, initialPhotosLoaded }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchPhotos: () => dispatch(fetchPhotos),
     finishLoading: () => dispatch(finishLoading()),
   }
 };

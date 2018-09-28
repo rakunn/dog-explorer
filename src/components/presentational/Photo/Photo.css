@@ -12,6 +12,10 @@
     filter 0.3s;
 }
 
+.Photo--loaded {
+  animation: popUp 0.5s forwards;
+}
+
 .Photo--round-borders {
   border-radius: 10px;
 }
@@ -84,8 +88,4 @@
     opacity: 1;
     transform: scale(1);
   }
-}
-
-.loaded {
-  animation: popUp 0.5s forwards;
 }

@@ -4,24 +4,20 @@ import PropTypes from 'prop-types';
 import './Gallery.css';
 
 import Spinner from '../Spinner';
-import Photos from '../Photos';
+import PhotosContainer from '../../containers/PhotosContainer';
 
-const Gallery = ({ photos, finishLoading, photosLoaded }) => {
+const Gallery = ({ photosLoaded }) => {
   return (
     <div className="Gallery">
       { photosLoaded || <Spinner /> }
-      <Photos
-        finishLoading={finishLoading}
-        photos={photos}
+      <PhotosContainer />
       />
     </div>
   )
 };
 
 Gallery.propTypes = {
-  photos: PropTypes.array.isRequired,
   photosLoaded: PropTypes.bool.isRequired,
-  finishLoading: PropTypes.func.isRequired,
 };
 
 export default Gallery;

@@ -3,26 +3,32 @@ import './Photos.css';
 
 import Photo from '../Photo';
 
-const Photos = ({ finishLoading, photos }) => {
-
+const Photos = ({ finishLoading, photos, photosLoaded }) => {
   let loadedImages = 0;
 
   const countLoadedImages = () => {
     loadedImages += 1;
     if (loadedImages === photos.length) {
       finishLoading();
-      document.querySelectorAll('.Photo').forEach((img, id) => {
-        img.classList.add('loaded');
-        img.style.animationDelay = `${(10 * id)/1000}s`;
-      });
       loadedImages = 0; //let's reset the counter for the next query
+    }
+  };
+
+  const afterLoad = (photoNum) => {
+    return photosLoaded && {
+      animationDelay: `${(10 * photoNum) / 1000}s`, //convert to seconds
+      class: 'Photo--loaded',
     }
   };
 
   return (
     <div className="Photos">
-      { photos.map((photo) => {
-        return <Photo key={photo.id} onload={countLoadedImages} {...photo} />
+      { photos.map((photo, num) => {
+        return <Photo
+          key={photo.id}
+          onload={countLoadedImages}
+          afterLoad={afterLoad(num)}
+          {...photo} />
       })}
     </div>
   );

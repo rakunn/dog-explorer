@@ -1,11 +1,13 @@
 import { UPDATE_PHOTOS } from "../constants";
 
-const defaultState = {"photos":{"page":1,"pages":4837,"perpage":100,"total":"483656","photo":[]}};
-
-export default (state = defaultState, action) => {
+export default (state = [], action) => {
+  console.log(action)
   switch (action.type) {
     case UPDATE_PHOTOS: {
-      return action.payload;
+      return [
+        ...state,
+        ...action.payload.photos.photo
+      ];
     }
     default: {
       return state;

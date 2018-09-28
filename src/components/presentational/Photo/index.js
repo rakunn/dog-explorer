@@ -1,13 +1,13 @@
 import React from 'react';
 import './Photo.css';
 
-const Photo = ({ dateupload, onload, description, farm, id, ownername, secret, server, title }) => {
+const Photo = ({ afterLoad, dateupload, onload, description, farm, id, ownername, secret, server, title }) => {
   const constructImageUrl = () => {
     return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_z.jpg`;
   };
 
   const constructDate = (dateInt) => {
-    return new Date(dateInt*1000).toLocaleDateString();
+    return new Date(dateInt * 1000).toLocaleDateString();
   };
 
   const shortenText = (textStr) => {
@@ -19,10 +19,10 @@ const Photo = ({ dateupload, onload, description, farm, id, ownername, secret, s
   };
 
   return (
-    <figure className="Photo Photo--round-borders">
+    <figure className={"Photo Photo--round-borders " + afterLoad.class} style={{animationDelay: afterLoad.animationDelay}}>
       <div className="Photo__content Photo--round-borders">
         <img
-          className="Photo__image Photo--round-borders loaded"
+          className="Photo__image Photo--round-borders"
           onLoad={onload}
           key={id}
           alt={`${title} by ${ownername}`}
