@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Photos from '../../presentational/Photos';
 import fetchPhotos from '../../../store/actions/fetchPhotos';
 import finishLoading from '../../../store/actions/finishLoading';
-import initialPhotosLoaded from "../../../store/reducers/initialPhotosLoaded";
 import incrementPage from "../../../store/actions/incrementPage";
 
 class PhotosContainer extends Component {
@@ -33,15 +32,17 @@ class PhotosContainer extends Component {
       <Photos
         finishLoading={this.props.finishLoading}
         photosLoaded={this.props.photosLoaded}
+        morePhotosLoaded={this.props.morePhotosLoaded}
         photos={this.props.photos}
       />
     );
   }
 }
 
-const mapStateToProps = ({ currentPage, initialPhotosLoaded, photos }) => {
+const mapStateToProps = ({ currentPage, initialPhotosLoaded, morePhotosLoaded, photos }) => {
   return {
     photosLoaded: initialPhotosLoaded,
+    morePhotosLoaded: morePhotosLoaded,
     currentPage: currentPage,
     photos: photos,
   }

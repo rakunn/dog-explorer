@@ -9,7 +9,7 @@ import PhotosContainer from '../../containers/PhotosContainer';
 const Gallery = ({ photosLoaded }) => {
   return (
     <div className="Gallery">
-      { photosLoaded || <Spinner /> }
+      { photosLoaded || <Spinner size={100} variant='main' /> }
       <PhotosContainer />
     </div>
   )

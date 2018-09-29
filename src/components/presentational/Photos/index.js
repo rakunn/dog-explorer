@@ -3,8 +3,9 @@ import Masonry from 'react-masonry-component';
 import './Photos.css';
 
 import Photo from '../Photo';
+import Spinner from "../Spinner";
 
-const Photos = ({ finishLoading, photos, photosLoaded }) => {
+const Photos = ({ finishLoading, photos, morePhotosLoaded, photosLoaded }) => {
   let loadedImages = 0;
 
   const countLoadedImages = () => {
@@ -22,8 +23,6 @@ const Photos = ({ finishLoading, photos, photosLoaded }) => {
     }
   };
 
-  console.log(photos);
-
   return (
     <div className="Photos">
       <Masonry>
@@ -38,6 +37,7 @@ const Photos = ({ finishLoading, photos, photosLoaded }) => {
         )
       })}
       </Masonry>
+      { morePhotosLoaded || <Spinner size={25} variant='infiniteScroll'/> }
     </div>
   );
 };
