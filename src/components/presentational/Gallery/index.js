@@ -11,7 +11,6 @@ const Gallery = ({ photosLoaded }) => {
     <div className="Gallery">
       { photosLoaded || <Spinner /> }
       <PhotosContainer />
-      />
     </div>
   )
 };

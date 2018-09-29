@@ -1,4 +1,5 @@
 import React from 'react';
+import Masonry from 'react-masonry-component';
 import './Photos.css';
 
 import Photo from '../Photo';
@@ -16,20 +17,27 @@ const Photos = ({ finishLoading, photos, photosLoaded }) => {
 
   const afterLoad = (photoNum) => {
     return photosLoaded && {
-      animationDelay: `${(10 * photoNum) / 1000}s`, //convert to seconds
+      animationDelay: `${(50 * photoNum) / 1000}s`, //convert to seconds
       class: 'Photo--loaded',
     }
   };
 
+  console.log(photos);
+
   return (
     <div className="Photos">
+      <Masonry>
       { photos.map((photo, num) => {
-        return <Photo
-          key={photo.id}
-          onload={countLoadedImages}
-          afterLoad={afterLoad(num)}
-          {...photo} />
+        return (
+          <Photo
+            key={photo.id}
+            onload={countLoadedImages}
+            afterLoad={afterLoad(num)}
+            {...photo}
+          />
+        )
       })}
+      </Masonry>
     </div>
   );
 };

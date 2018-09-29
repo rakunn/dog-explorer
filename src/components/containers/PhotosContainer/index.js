@@ -6,6 +6,7 @@ import Photos from '../../presentational/Photos';
 import fetchPhotos from '../../../store/actions/fetchPhotos';
 import finishLoading from '../../../store/actions/finishLoading';
 import initialPhotosLoaded from "../../../store/reducers/initialPhotosLoaded";
+import incrementPage from "../../../store/actions/incrementPage";
 
 class PhotosContainer extends Component {
   static propTypes = {
@@ -15,12 +16,13 @@ class PhotosContainer extends Component {
   };
 
   componentDidMount = () => {
-    const firstPage = 1;
-    this.props.fetchPhotos(firstPage);
+    const QUERIES = 4; // 4 queries and 25 results per page = 100 photos
+    this.props.fetchPhotos(QUERIES);
 
     window.onscroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-        this.props.fetchPhotos(2);
+      if (window.innerHeight + Math.ceil(document.documentElement.scrollTop) === document.documentElement.offsetHeight) {
+        const nextPage = this.props.currentPage + 1;
+        this.props.fetchPhotos(1, nextPage);
       }
     };
   };
@@ -37,18 +39,19 @@ class PhotosContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ initialPhotosLoaded, photos }) => {
+const mapStateToProps = ({ currentPage, initialPhotosLoaded, photos }) => {
   return {
     photosLoaded: initialPhotosLoaded,
+    currentPage: currentPage,
     photos: photos,
-    all: photos,
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchPhotos: (id) => dispatch(fetchPhotos(id)),
+    fetchPhotos: (iteration, pageNumber) => dispatch(fetchPhotos(iteration, pageNumber)),
     finishLoading: () => dispatch(finishLoading()),
+    incrementPage: (num) => dispatch(incrementPage(num))
   }
 };
 

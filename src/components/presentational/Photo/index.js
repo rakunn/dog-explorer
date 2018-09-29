@@ -19,7 +19,7 @@ const Photo = ({ afterLoad, dateupload, onload, description, farm, id, ownername
   };
 
   return (
-    <figure className={"Photo Photo--round-borders " + afterLoad.class} style={{animationDelay: afterLoad.animationDelay}}>
+    <figure className="Photo Photo--round-borders">
       <div className="Photo__content Photo--round-borders">
         <img
           className="Photo__image Photo--round-borders"
