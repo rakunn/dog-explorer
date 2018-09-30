@@ -27,8 +27,8 @@ const Photo = ({ afterLoad, dateupload, description, farm, id, ownername, secret
           alt={`${title} by ${ownername}`}
           src={constructImageUrl()}
           />
-        <p className="Photo__date-taken">{constructDate(dateupload)}</p>
-        <p className="Photo__author">{ownername}</p>
+        <p className="Photo__date-taken"><i className="fas fa-camera"></i> {constructDate(dateupload)}</p>
+        <p className="Photo__author"><i className="far fa-user"></i> {ownername}</p>
       </div>
       <figcaption className="Photo__caption">
         { description.length > 0 && (

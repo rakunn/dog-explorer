@@ -1,17 +1,14 @@
 .Photo {
-  /*background-color: white;*/
-  /*position: relative;*/
-  /*box-sizing: border-box;*/
   margin: 1em;
-  /*height: auto;*/
   width: calc(25% - 2em);
-  /*line-height: 0;*/
-  /*transition:*/
-    /*background-color 0.3s,*/
-    /*filter 0.3s;*/
+  filter: grayscale(70%);
+  transition:
+    background-color 0.3s,
+    filter 0.3s;
 }
 .Photo--round-borders {
   border-radius: 10px;
+  line-height: 0;
 }
 
 .Photo__content {
@@ -19,13 +16,25 @@
   overflow: hidden;
 }
 
+.Photo__content::after {
+  content: '';
+  background-color: #fff;
+  bottom: 0;
+  display: block;
+  position: absolute;
+  opacity: 0.9;
+  height: 0;
+  transition: height 0.3s;
+  width: 100%;
+}
+
 .Photo__author {
   color: #fff;
   position: absolute;
   bottom: 0;
-  right: 1em;
-  font-size: 1.25em;
+  left: 1em;
   z-index: 1;
+  transition: color 0.3s;
 }
 
 .Photo__date-taken {
@@ -33,41 +42,73 @@
   position: absolute;
   top: 0;
   right: 1em;
+  font-size: 0.95em;
+  opacity: 0;
+  transform: translateY(-2em);
+  transition:
+    opacity 0s,
+    transform 0.3s;
   z-index: 1;
 }
 
 .Photo__image {
   width: 100%;
-  /*transition:*/
-    /*filter 0.3s,*/
-    /*transform 0.3s;*/
-
-  /*!* below properties are used for fixing bug with blinking border-radius while transition*!*/
-  /*-webkit-backface-visibility: hidden;*/
-  /*-moz-backface-visibility: hidden;*/
-  /*-webkit-transform: translate3d(0, 0, 0);*/
-  /*-moz-transform: translate3d(0, 0, 0);*/
+  transition:
+    filter 0.3s,
+    transform 0.3s;
 }
 
-/*.Photo__caption {*/
-  /*margin: 0;*/
-  /*padding: 0;*/
-/*}*/
+.Photo__caption {
+  margin: 0;
+  padding: 0;
+}
 
-/*.Photo__description {*/
-  /*box-sizing: border-box;*/
-  /*color: #444;*/
-  /*margin: 0;*/
-  /*padding: 1em;*/
-  /*width: 100%;*/
-  /*line-height: normal;*/
-/*}*/
+.Photo__description {
+  box-sizing: border-box;
+  color: #444;
+  margin: 0;
+  padding: 1em;
+  width: 100%;
+  line-height: normal;
+}
 
-/*.Photo:hover {*/
-  /*background-color: #ddd;*/
-/*}*/
+.Photo:hover {
+  filter: grayscale(0%);
+  background-color: #ddd;
+}
 
-/*.Photo:hover .Photo__image {*/
-  /*filter: brightness(70%);*/
-  /*transform: scale(1.1);*/
-/*}*/
+.Photo:hover .Photo__image {
+  filter: brightness(70%);
+  transform: scale(1.05);
+}
+
+.Photo:hover .Photo__content::after {
+  height: 3em;
+}
+
+.Photo:hover .Photo__date-taken {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.Photo:hover .Photo__author {
+  color: #222;
+}
+
+@media screen and (max-width: 1250px) {
+  .Photo {
+    width: calc(100% / 3 - 2em);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .Photo {
+    width: calc(50% - 2em);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Photo {
+    width: calc(100% - 2em);
+  }
+}
