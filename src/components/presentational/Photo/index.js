@@ -31,8 +31,8 @@ const Photo = ({ afterLoad, dateupload, description, farm, id, ownername, secret
         <p className="Photo__author">{ownername}</p>
       </div>
       <figcaption className="Photo__caption">
-        { description._content.length > 0 && (
-          <p className="Photo__description">{shortenText(description._content)}</p>
+        { description.length > 0 && (
+          <p className="Photo__description">{shortenText(description)}</p>
         )}
       </figcaption>
     </figure>

@@ -2,10 +2,10 @@ import axios from 'axios';
 import incrementPage from './incrementPage';
 import updatePhotos from './updatePhotos';
 import startLoading from './startLoading';
-import finishLoading from './finishLoading';
 
 export default (iteration, startingPage = 1) => (dispatch) => {
-  const URI = (pageNum) => `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=c72e4cad056b2b4b7a04483d515d11a9&text=dogs&format=json&nojsoncallback=1&extras=date_upload,description,owner_name&page=${pageNum}&per_page=25`;
+  /* TODO: parametrize URI creactor function */
+  const URI = (pageNum) => `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=c72e4cad056b2b4b7a04483d515d11a9&text=dogs&format=json&nojsoncallback=1&extras=date_upload,description,license,owner_name&page=${pageNum}&per_page=25`;
 
   dispatch(startLoading());
 

@@ -9,43 +9,58 @@ import incrementPage from "../../../store/actions/incrementPage";
 
 class PhotosContainer extends Component {
   static propTypes = {
+    currentPage: PropTypes.number.isRequired,
+    filterQuery: PropTypes.string.isRequired,
     fetchPhotos: PropTypes.func.isRequired,
     finishLoading: PropTypes.func.isRequired,
     photos: PropTypes.array.isRequired,
   };
 
   componentDidMount = () => {
-    const QUERIES = 4; // 4 queries and 25 results per page = 100 photos
-    this.props.fetchPhotos(QUERIES);
+    const iteration = 4; // 4 queries and 25 results per page = 100 photos
+    this.props.fetchPhotos(iteration);
 
     window.onscroll = () => {
       if (window.innerHeight + Math.ceil(document.documentElement.scrollTop) === document.documentElement.offsetHeight) {
+        const iteration = 1;
         const nextPage = this.props.currentPage + 1;
-        this.props.fetchPhotos(1, nextPage);
+        this.props.fetchPhotos(iteration, nextPage);
       }
     };
   };
 
+  filterPhotos = (photoArray, filterQuery) => {
+    const lowerCase = (value) => value.toString().toLowerCase();
+    return photoArray.filter(photo => {
+      for (let value in photo) {
+        if (lowerCase(photo[value]).includes(lowerCase(filterQuery))) {
+          return true;
+        }
+      }
+      return false;
+    });
+  };
+
   render() {
-    console.log(this.props);
     return (
       <Photos
         finishLoading={this.props.finishLoading}
         photosLoaded={this.props.photosLoaded}
         morePhotosLoaded={this.props.morePhotosLoaded}
-        photos={this.props.photos}
+        photos={this.filterPhotos(this.props.photos, this.props.filterQuery)}
       />
     );
   }
 }
 
-const mapStateToProps = ({ currentPage, initialPhotosLoaded, morePhotosLoaded, photos }) => {
+const mapStateToProps = ({ currentPage, filterQuery, initialPhotosLoaded, morePhotosLoaded, photos }) => {
   return {
-    photosLoaded: initialPhotosLoaded,
-    morePhotosLoaded: morePhotosLoaded,
     currentPage: currentPage,
-    photos: photos,
-  }
+    filterQuery: filterQuery,
+    morePhotosLoaded: morePhotosLoaded,
+    photosLoaded: initialPhotosLoaded,
+    photos: photos.map(photo => ({...photo, description: photo.description._content})) //fix description structure to align with the rest keys
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -53,7 +68,7 @@ const mapDispatchToProps = dispatch => {
     fetchPhotos: (iteration, pageNumber) => dispatch(fetchPhotos(iteration, pageNumber)),
     finishLoading: () => dispatch(finishLoading()),
     incrementPage: (num) => dispatch(incrementPage(num))
-  }
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotosContainer);

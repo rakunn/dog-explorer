@@ -10,7 +10,7 @@ const AppBar = ({ filterQuery, updateFilterQuery }) => {
   return (
     <header className="AppBar">
       <h1 className="AppBar__title"><i className="fas fa-paw"></i> Dog Explorer</h1>
-      <input className="AppBar__filter" type='text' placeholder="Title, author, license..." value={filterQuery} onChange={handleChange}/>
+      <input className="AppBar__filter" type='text' placeholder="Title, author, description..." value={filterQuery} onChange={handleChange}/>
     </header>
   )
 };
