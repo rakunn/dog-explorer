@@ -1,0 +1,34 @@
+.ErrorHandler {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ErrorHandler__container {
+  width: 80%;
+  max-width: 600px;
+}
+
+.ErrorHandler__icon {
+  background-color: #ff6f58;
+  color: #fff;
+  padding: 2em;
+  text-align: center;
+}
+
+.ErrorHandler__info {
+  background-color: #eee;
+  padding: 1em;
+}
+
+.ErrorHandler__main-info {
+  color: #444;
+  margin: 0;
+  text-align: center;
+}
+
+.ErrorHandler__secondary-info {
+  font-size: 0.9em;
+}

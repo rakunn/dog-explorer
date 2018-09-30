@@ -7,7 +7,7 @@ const Photo = ({ afterLoad, dateupload, description, farm, id, ownername, secret
   };
 
   const constructDate = (dateInt) => {
-    return new Date(dateInt * 1000).toLocaleDateString();
+    return new Date(dateInt * 1000).toLocaleDateString(); //1000 means we are converting seconds (API specific) to miliseconds
   };
 
   const shortenText = (textStr) => {
