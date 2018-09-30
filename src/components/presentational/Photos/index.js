@@ -6,14 +6,9 @@ import Photo from '../Photo';
 import Spinner from "../Spinner";
 
 const Photos = ({ finishLoading, photos, morePhotosLoaded, photosLoaded }) => {
-  let loadedImages = 0;
-
-  const countLoadedImages = () => {
-    loadedImages += 1;
-    if (loadedImages === photos.length) {
-      finishLoading();
-      loadedImages = 0; //let's reset the counter for the next query
-    }
+  const handleImagesLoaded = () => {
+    console.log('loaded')
+    setTimeout(finishLoading, 500);
   };
 
   const afterLoad = (photoNum) => {
@@ -25,12 +20,11 @@ const Photos = ({ finishLoading, photos, morePhotosLoaded, photosLoaded }) => {
 
   return (
     <div className="Photos">
-      <Masonry>
+      <Masonry onLayoutComplete={handleImagesLoaded}>
       { photos.map((photo, num) => {
         return (
           <Photo
             key={photo.id}
-            onload={countLoadedImages}
             afterLoad={afterLoad(num)}
             {...photo}
           />

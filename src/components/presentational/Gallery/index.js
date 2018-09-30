@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 
 import './Gallery.css';
 
-import Spinner from '../Spinner';
+import AppBarContainer from '../../containers/AppBarContainer';
 import PhotosContainer from '../../containers/PhotosContainer';
+import Spinner from '../Spinner';
 
 const Gallery = ({ photosLoaded }) => {
   return (
     <div className="Gallery">
-      { photosLoaded || <Spinner size={100} variant='main' /> }
+      <AppBarContainer />
       <PhotosContainer />
+      { photosLoaded || <Spinner size={100} variant='main' /> }
     </div>
   )
 };

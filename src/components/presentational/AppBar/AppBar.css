@@ -1,0 +1,16 @@
+.AppBar {
+  background-color: #222;
+  display: flex;
+}
+
+.AppBar__title {
+  padding: 0 1em;
+  font-size: 20px;
+  color: #fff;
+}
+
+.AppBar__filter {
+  flex-basis: auto;
+  font-size: 1.1em;
+  padding: 0 1em;
+}

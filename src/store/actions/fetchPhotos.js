@@ -24,7 +24,6 @@ export default (iteration, startingPage = 1) => (dispatch) => {
         acc = acc.concat(next);
         return acc;
       }, []);
-      dispatch(finishLoading('infiniteScroll'));
       dispatch(updatePhotos(combinedArrays));
     });
 };

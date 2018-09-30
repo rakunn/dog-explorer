@@ -1,9 +1,9 @@
 import React from 'react';
 import './Photo.css';
 
-const Photo = ({ afterLoad, dateupload, onload, description, farm, id, ownername, secret, server, title }) => {
+const Photo = ({ afterLoad, dateupload, description, farm, id, ownername, secret, server, title }) => {
   const constructImageUrl = () => {
-    return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_z.jpg`;
+    return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_n.jpg`;
   };
 
   const constructDate = (dateInt) => {
@@ -23,7 +23,6 @@ const Photo = ({ afterLoad, dateupload, onload, description, farm, id, ownername
       <div className="Photo__content Photo--round-borders">
         <img
           className="Photo__image Photo--round-borders"
-          onLoad={onload}
           key={id}
           alt={`${title} by ${ownername}`}
           src={constructImageUrl()}
