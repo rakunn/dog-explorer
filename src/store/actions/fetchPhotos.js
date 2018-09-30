@@ -25,5 +25,8 @@ export default (iteration, startingPage = 1) => (dispatch) => {
         return acc;
       }, []);
       dispatch(updatePhotos(combinedArrays));
+    })
+    .catch(() => {
+      throw new Error('One or more queries failed. Please verify your internet connection');
     });
 };

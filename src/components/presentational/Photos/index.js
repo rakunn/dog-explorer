@@ -7,7 +7,6 @@ import Spinner from "../Spinner";
 
 const Photos = ({ finishLoading, photos, morePhotosLoaded, photosLoaded }) => {
   const handleImagesLoaded = () => {
-    console.log('loaded')
     setTimeout(finishLoading, 500);
   };
 
