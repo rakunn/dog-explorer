@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Photo.css';
 
-const Photo = ({ afterLoad, dateupload, description, farm, id, ownername, secret, server, title }) => {
+const Photo = ({ dateupload, description, farm, id, ownername, secret, server, title }) => {
   const constructImageUrl = () => {
     return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_n.jpg`;
   };
@@ -37,6 +38,17 @@ const Photo = ({ afterLoad, dateupload, description, farm, id, ownername, secret
       </figcaption>
     </figure>
   );
+};
+
+Photo.propTypes = {
+  dateupload: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  farm: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  ownername: PropTypes.string.isRequired,
+  secret: PropTypes.string.isRequired,
+  server: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Photo;
